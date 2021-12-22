@@ -4,7 +4,6 @@ import 'package:flutter_wanandroid_app/res/r.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 import 'package:lottie/lottie.dart';
-import 'package:get/get.dart';
 
 class LoadingDialog extends StatelessWidget {
   String text = '';

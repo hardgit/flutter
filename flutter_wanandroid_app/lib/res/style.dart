@@ -1,15 +1,51 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 
 /// @description :样式文件
 class Styles {
 
+
+  static TextStyle style_FE8C28_18_bold = TextStyle(
+    color:ColorStyle.color_FE8C28,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700
+  );
+
+  static TextStyle style_1A2F51_18_bold = TextStyle(
+    color:ColorStyle.color_1A2F51,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500
+  );
+  static const TextStyle style_B8C0D4_14 =
+  TextStyle(color: ColorStyle.color_B8C0D4, fontSize: 14);
+  /*输入框字体*/
+  static TextStyle style_edit_17_FF333333 = TextStyle(
+    color:ColorStyle.color_FF333333,
+    fontSize: 17.sp
+  );
+  /*记住密码字体*/
+  static TextStyle style_edit_14_FF333333 = TextStyle(
+    color:ColorStyle.color_FF333333,
+    fontSize: 14.sp
+  );
+
+  /*---------------------------加粗字体---------------------------*/
+  static TextStyle style_black_18_bold =
+  TextStyle(color: Colors.black, fontSize: 18.sp, fontWeight: FontWeight.w700);
+
+
+
   ///---------------------------黑绿色字体区域-------------------------------
 
 
   ///---------------------------淡灰色字体区域-------------------------------
+  static const TextStyle style_B8C0D4_11 =
+  TextStyle(color: ColorStyle.color_B8C0D4, fontSize: 11);
+  static const TextStyle style_B8C0D4_13 =
+  TextStyle(color: ColorStyle.color_B8C0D4, fontSize: 13);
 
 
   ///---------------------------浅灰色字体区域-------------------------------
@@ -38,8 +74,7 @@ class Styles {
   static const TextStyle style_white_36 =
       TextStyle(color: Colors.white, fontSize: 36);
   ///---------------------------黑色字体区域-------------------------------
-  static const TextStyle style_black_18_bold =
-      TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700);
+
   static const TextStyle style_black_18_bold500 =
       TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500);
   static const TextStyle style_black_16_bold =

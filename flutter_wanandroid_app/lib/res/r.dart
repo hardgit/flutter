@@ -10,4 +10,7 @@ class R {
   static const String assetsLottieRefreshError = 'assets/lottie/refresh_error.json';
   static const String assetsLottieCollect = 'assets/lottie/collect_success.json';
 
+
+  static const String login_logo_ic = "assets/images/login_logo_ic.png";/*登录页logo*/
+
 }
