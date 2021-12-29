@@ -22,6 +22,8 @@ abstract class GetSaveView<T extends GetxController> extends StatefulWidget {
   ///widget生命周期
   get lifecycle => null;
 
+  void initState() =>null;
+
   @protected
   Widget build(BuildContext context);
 

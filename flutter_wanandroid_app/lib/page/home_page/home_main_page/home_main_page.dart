@@ -1,3 +1,6 @@
+
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,8 +9,10 @@ import 'package:flutter_wanandroid_app/res/DecorationStyle.dart';
 import 'package:flutter_wanandroid_app/res/box.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
+import 'package:flutter_wanandroid_app/utils/webviews.dart';
 import 'package:flutter_wanandroid_app/widgets/pull_smart_refresher.dart';
 import 'package:flutter_wanandroid_app/widgets/ripple_widget.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'home_main_controller.dart';
 import 'main_home_item.dart';
@@ -18,6 +23,15 @@ import 'main_home_item.dart';
 ///@Description TODO 主页列表
 
 class HomeMainPage extends GetSaveView<HomeMainController> {
+
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isAndroid) {
+      WebView.platform = SurfaceAndroidWebView();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +45,7 @@ class HomeMainPage extends GetSaveView<HomeMainController> {
                    return Material(
                         color: Colors.transparent,
                         child: Ripple(
-                          onTap: (){
-                            /// todo 跳转详情
-                          },
+                          onTap: ()=> WebViews.toWebPage(controller.projectDetails[index]),
                           child: MainHomeItem(item: controller.projectDetails[index],index:index)
                         ));
                   },
