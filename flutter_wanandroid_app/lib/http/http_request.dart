@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid_app/http/http_exception.dart';
 import 'package:flutter_wanandroid_app/http/request_api.dart';
+import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
+import 'package:flutter_wanandroid_app/utils/sp_util.dart';
 
 /// 连接超时时间
 const int _connectTimeout = 10000;
@@ -94,16 +96,15 @@ class HttpRequest {
 
 /// 请求时添加cookie
 Map<String, dynamic>? _headerToken(){
-  /// 自定义Header,如需要添加token信息请调用此参数
-  // UserEntity? info = SpUtil.getUserInfo();
-  // if(info == null){
-  //   return null;
-  // }
-  // Map<String, dynamic> httpHeaders = {
-  //   'Cookie': 'loginUserName=${info.username};loginUserPassword=${info.password}',
-  // };
-  // return httpHeaders;
-  return Map();
+  // 自定义Header,如需要添加token信息请调用此参数
+  UserEntity? info = SpUtil.getUserInfo();
+  if(info == null){
+    return new Map();
+  }
+  Map<String, dynamic> httpHeaders = {
+    'Cookie': 'loginUserName=${info.username};loginUserPassword=${info.password}',
+  };
+  return httpHeaders;
 }
 
 

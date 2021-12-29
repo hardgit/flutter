@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid_app/base/get/get_extension.dart';
+import 'package:flutter_wanandroid_app/res/box.dart';
 import 'package:flutter_wanandroid_app/res/button_style.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 import 'package:flutter_wanandroid_app/widgets/over_scroll_behavior.dart';
@@ -70,7 +71,7 @@ class CommonDialog extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             ///标题、内容
-                            Box.vBox15,
+                            Box.getSizeBoxH(15),
                             Text(
                               title,
                               style: Styles.style_black_18_bold500,

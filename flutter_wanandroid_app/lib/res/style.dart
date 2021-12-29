@@ -32,9 +32,31 @@ class Styles {
     fontSize: 14.sp
   );
 
+  static TextStyle style_10_white = TextStyle(
+    color:Colors.white,
+    fontSize: 10.sp
+  );
+
+  static TextStyle style_12_EFEFEF = TextStyle(
+      color:ColorStyle.color_EFEFEF,
+      fontSize: 12.sp
+  );
+
+  static TextStyle style_12_FE8C28 = TextStyle(
+    color:ColorStyle.color_FE8C28,
+    fontSize: 12.sp
+  );
+  static TextStyle style_12_FF333333 = TextStyle(
+    color:ColorStyle.color_FF333333,
+    fontSize: 12.sp
+  );
+
   /*---------------------------加粗字体---------------------------*/
   static TextStyle style_black_18_bold =
   TextStyle(color: Colors.black, fontSize: 18.sp, fontWeight: FontWeight.w700);
+
+  static TextStyle style_black_15_bold =
+  TextStyle(color: Colors.black, fontSize: 15.sp, fontWeight: FontWeight.w500);
 
 
 
@@ -98,37 +120,6 @@ class Styles {
 
 }
 
-/// 间隔
-class Box {
-  /// 水平间隔
-  static Widget hBox3 = const SizedBox(width: 3);
-  static Widget hBox5 = const SizedBox(width: 5);
-  static Widget hBox6 = const SizedBox(width: 6);
-  static Widget hBox10 = const SizedBox(width: 10);
-  static Widget hBox12 = const SizedBox(width: 12);
-  static Widget hBox15 = const SizedBox(width: 15);
-  static Widget hBox20 = const SizedBox(width: 20);
-  static Widget hBox30 = const SizedBox(width: 30);
-
-  /// 垂直间隔
-  static Widget vBox3 = const SizedBox(height: 3);
-  static Widget vBox5 = const SizedBox(height: 5);
-  static Widget vBox10 = const SizedBox(height: 10);
-  static Widget vBox12 = const SizedBox(height: 12);
-  static Widget vBox15 = const SizedBox(height: 15);
-  static Widget vBox20 = const SizedBox(height: 20);
-  static Widget vBox30 = const SizedBox(height: 30);
-  static Widget vBox50 = const SizedBox(height: 50);
-
-  static Widget getHGap(double w) {
-    return SizedBox(width: w);
-  }
-
-  static Widget getVGap(double h) {
-    return SizedBox(height: h);
-  }
-}
-
 class DividerStyle {
   ///分割线 0.5 - 20边距
   static Widget divider1HalfPadding20 = const Divider(
@@ -154,3 +145,4 @@ class DividerStyle {
   );
 
 }
+

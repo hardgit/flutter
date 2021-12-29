@@ -19,23 +19,27 @@ class RememberThePassword extends GetCommonView<LoginController>{
   const RememberThePassword({Key? key}) : super(key: key);
 
   @override
-  get updateId => "isCheckPrivacy";
+  get updateId => StringStyles.isCheckPrivacy;
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Row(
-          children: [
-            Checkbox(
-                fillColor:MaterialStateProperty.all(ColorStyle.color_FBE240),
-                value: controller.isCheckPrivacy,
-                onChanged: (value){
-                  controller.updateCheckPrivacy();
-                }),
-            Text(StringStyles.rememberThePassword,
-              style: Styles.style_edit_14_FF333333,)
-          ]
-      )
+    return Row(
+        children: [
+          Checkbox(
+              fillColor:MaterialStateProperty.all(ColorStyle.color_FBE240),
+              value: controller.isCheckPrivacy,
+              onChanged: (value){
+                controller.updateCheckPrivacy();
+              }),
+          Text(StringStyles.rememberThePassword,
+            style: Styles.style_edit_14_FF333333,)
+        ]
     );
   }
 

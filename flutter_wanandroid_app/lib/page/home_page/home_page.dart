@@ -1,13 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wanandroid_app/page/home_page/home_main_page/home_main_page.dart';
-import 'package:flutter_wanandroid_app/page/home_page/home_square_page/home_square_page.dart';
-import 'package:flutter_wanandroid_app/res/colors.dart';
+ import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 
-import 'home_ask_page/home_ask_page.dart';
 
 ///@FileName home_page
 ///@Date 2021/12/17  14:28
@@ -62,9 +61,7 @@ class _HomePageState extends State<HomePage>
                    ]
                ),
              ),
-             SizedBox(width: 20),
-
-
+             SizedBox(width: 20.w),
              Expanded(
                  child: TabBarView(
                  children: [HomeMainPage(),HomeMainPage(),HomeMainPage()],

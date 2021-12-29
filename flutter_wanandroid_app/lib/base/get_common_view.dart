@@ -16,6 +16,8 @@ abstract class GetCommonView<T extends GetxController> extends StatefulWidget {
   @protected
   Widget build(BuildContext context);
 
+  void initState() =>null;
+
   @override
   AutoDisposeState createState() => AutoDisposeState<T>();
 }
@@ -38,6 +40,7 @@ class AutoDisposeState<S extends GetxController> extends State<GetCommonView> {
   @override
   void initState() {
     super.initState();
+    widget.initState();
   }
 
   @override

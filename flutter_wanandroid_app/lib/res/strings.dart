@@ -24,5 +24,13 @@ class StringStyles {
   static const String enterYourPin = "请输入密码";
   static const String login = "登录";
   static const String rememberThePassword = "记住密码";
+  static const String theAccountCannotBeEmpty = "账号不能为空";
+  static const String accountLengthNoSix = "账号不能小于6位";
+  static const String thePasswordCannotBeEmpty = "密码不能为空";
+  static const String pwdLengthNoSix = "密码不能小于6位";
+  static const String loginSuccess = "登录成功";
+  static const String isCheckPrivacy = "isCheckPrivacy";
+  static const String recommend = "荐";
+  static const String pointsNotifySuccess = "刷新成功";
 
 }

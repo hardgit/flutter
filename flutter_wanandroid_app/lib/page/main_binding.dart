@@ -1,3 +1,5 @@
+import 'package:flutter_wanandroid_app/base/get/controller/base_page_controller.dart';
+import 'package:flutter_wanandroid_app/base/get/getx_controller_inject.dart';
 import 'package:get/get.dart';
 
 import 'home_page/home_main_page/home_main_controller.dart';

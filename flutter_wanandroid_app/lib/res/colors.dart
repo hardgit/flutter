@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 class ColorStyle{
 
   static const color_B8C0D4 = Color(0xFFB8C0D4);
+  static const color_EFEFEF = Color(0xFFEFEFEF);
   static const color_1A2F51 = Color(0xFF1A2F51);
   static const color_24CF5F = Color(0xFF24CF5F);
   static const color_FBE240 = Color(0xFFFBE240);

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_wanandroid_app/base/common_routes.dart';
 import 'package:flutter_wanandroid_app/base/get_common_view.dart';
+import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
 import 'package:flutter_wanandroid_app/page/login_page/remember_the_password.dart';
 import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/r.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 import 'package:flutter_wanandroid_app/utils/keyboard_util.dart';
+import 'package:flutter_wanandroid_app/utils/sp_util.dart';
+import 'package:get/get.dart';
 
 import 'login_controller.dart';
 
@@ -18,12 +22,20 @@ import 'login_controller.dart';
 
 class LoginPage extends GetCommonView<LoginController>{
 
+  LoginPage({Key? key}):super(key: key);
 
   final textAccountController = TextEditingController();/*账号控制器*/
   final textPwdController = TextEditingController();/*密码控制器*/
 
-   LoginPage({Key? key}):super(key: key);
-
+   @override
+  void initState() {
+      super.initState();
+      UserEntity? userInfo = SpUtil.getUserInfo();
+      if(userInfo!=null){
+        textAccountController.text = userInfo.username;
+        textPwdController.text = userInfo.password;
+      }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +63,6 @@ class LoginPage extends GetCommonView<LoginController>{
                     hintText: StringStyles.pleaseEnterYourAccountNumber,
                     contentPadding: EdgeInsets.only(left: 10.w)
                  ),
-                 obscureText: true,
                  controller: textAccountController,
                )
              ),

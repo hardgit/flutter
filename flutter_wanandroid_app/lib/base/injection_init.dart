@@ -2,6 +2,8 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'get/controller/base_page_controller.dart';
+
 /// @class : Injection
 /// @date : 2021/08/19
 /// @name : jhf
@@ -11,5 +13,6 @@ class Injection{
   static Future<void> init() async {
     await Get.putAsync(() => SharedPreferences.getInstance());
     Get.lazyPut(() =>RequestRepository());
+    Get.lazyPut(() => BaseGetPageController());
   }
 }
