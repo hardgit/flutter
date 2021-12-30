@@ -70,6 +70,7 @@ class ResultProjectDetail{
   ResultProjectDetail.fromJson(Map<dynamic,dynamic> json){
     apkLink = json["apkLink"];
     audit = json["audit"];
+    author = json["author"];
     canEdit = json["canEdit"];
     chapterId = json["chapterId"];
     collect = json["collect"];
