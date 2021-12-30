@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,6 +16,14 @@ import 'web_controller.dart';
 class WebViewPage extends GetCommonView<WebController>{
 
   const WebViewPage({Key? key}) : super(key: key);
+
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isAndroid) {
+      WebView.platform = SurfaceAndroidWebView();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

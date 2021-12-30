@@ -53,7 +53,8 @@ dependencies:
   #加载html标签
   flutter_html: ^2.2.1
   html: ^0.15.0
-
+  # WebView
+  webview_flutter: ^2.0.12
 
 dev_dependencies:
   flutter_test:

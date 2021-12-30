@@ -11,7 +11,7 @@ import '../getx_controller_inject.dart';
 /// @description :分页专用，如果页面中有分页加载，请使用此BaseGetPageController
 /// 如果没有分页，请使用BaseGetController
 /// 此页面暂时不对数据进行处理，不防止List在此处，因为当前已经很简洁了，不需要绑定[RefreshWidget]进行节省代码
-class BaseGetPageController extends BaseGetController{
+abstract class BaseGetPageController extends BaseGetController{
 
 
   ///加载状态  0加载中 1加载成功 2加载数据为空 3加载失败
@@ -20,7 +20,6 @@ class BaseGetPageController extends BaseGetController{
   int page = 1;
   ///是否初次加载
   var isInit = true;
-
 
 
 
@@ -60,7 +59,9 @@ class BaseGetPageController extends BaseGetController{
 
 
   ///网络请求在此处进行，不用在重复进行上拉下拉的处理
-  void requestData(RefreshController controller , {Refresh refresh = Refresh.first}) {}
+  void requestData(RefreshController controller , {Refresh refresh = Refresh.first}){
+
+  }
 
 
 

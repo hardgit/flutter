@@ -7,6 +7,8 @@ import 'package:flutter_wanandroid_app/page/home_page/home_main_page/home_main_p
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 
+import 'home_square_page/home_square_page.dart';
+
 
 ///@FileName home_page
 ///@Date 2021/12/17  14:28
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage>
              SizedBox(width: 20.w),
              Expanded(
                  child: TabBarView(
-                 children: [HomeMainPage(),HomeMainPage(),HomeMainPage()],
+                 children: [HomeMainPage(),HomeSquarePage(),HomeMainPage()],
                  controller: _tabController,
              ))
            ],

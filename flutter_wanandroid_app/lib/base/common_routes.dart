@@ -14,11 +14,10 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 ///@Description TODO 统一路由管理
 
 abstract class CommonRoutes {
-  ///首页
-  static const String login = '/login';
-  static const String main = '/main';
-  static const String home = '/home';
-  static const String web = '/web';
+
+  static const String login = '/login'; ///登录页
+  static const String main = '/main';///主页
+  static const String web = '/web';///webview页
 
 
   ///页面合集
@@ -32,12 +31,9 @@ abstract class CommonRoutes {
         page: () => const MainPage(),
         binding: MainBinding()),
     GetPage(
-        name: home,
-        page: () => const HomePage(),
-        binding: HomeBinding()),
-    GetPage(
         name: web,
         page: () => const WebViewPage(),
         binding: WebBinding()),
+
   ];
 }

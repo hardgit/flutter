@@ -37,6 +37,11 @@ class Styles {
     fontSize: 10.sp
   );
 
+  static TextStyle style_9_white = TextStyle(
+    color:Colors.white,
+    fontSize: 9.sp
+  );
+
   static TextStyle style_12_EFEFEF = TextStyle(
       color:ColorStyle.color_EFEFEF,
       fontSize: 12.sp

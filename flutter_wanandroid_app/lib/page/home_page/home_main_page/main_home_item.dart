@@ -12,7 +12,7 @@ import 'package:html/parser.dart';
 ///@FileName main_home_item
 ///@Date 2021/12/24  17:04
 ///@author zf
-///@Description TODO 列表ui
+///@Description TODO 首页item
 
 class MainHomeItem extends StatelessWidget {
 
@@ -56,9 +56,13 @@ class MainHomeItem extends StatelessWidget {
           Row(
             children: [
               Text(item.superChapterName,style: Styles.style_12_FE8C28),
-              Box.getSizeBoxW(5),
-              Text("|",style: Styles.style_12_FF333333),
-              Box.getSizeBoxW(5),
+              Box.getSizeBoxW(10),
+              Text(" | ",style: Styles.style_12_FF333333),
+              Box.getSizeBoxW(10),
+              Text(
+                  item.shareUser.isEmpty?item.author:item.shareUser,
+                  style: Styles.style_12_FF333333),
+              Box.getSizeBoxW(10),
               Text(item.niceDate,style: Styles.style_12_FF333333)
             ],
           ),

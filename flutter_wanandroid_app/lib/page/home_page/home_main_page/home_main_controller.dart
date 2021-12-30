@@ -8,7 +8,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 ///@FileName home_main_controller
 ///@Date 2021/12/17  15:18
 ///@author zf
-///@Description TODO
+///@Description TODO 首页控制层
 class HomeMainController extends BaseGetPageController{
 
   List<ResultProjectDetail> projectDetails = [];

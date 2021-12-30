@@ -31,6 +31,7 @@ class StringStyles {
   static const String loginSuccess = "登录成功";
   static const String isCheckPrivacy = "isCheckPrivacy";
   static const String recommend = "荐";
+  static const String data_new = "新";
   static const String pointsNotifySuccess = "刷新成功";
 
 }

@@ -20,17 +20,10 @@ import 'main_home_item.dart';
 ///@FileName home_main_page
 ///@Date 2021/12/17  15:16
 ///@author zf
-///@Description TODO 主页列表
+///@Description TODO 首页UI
 
 class HomeMainPage extends GetSaveView<HomeMainController> {
 
-  @override
-  void initState() {
-    super.initState();
-    if (Platform.isAndroid) {
-      WebView.platform = SurfaceAndroidWebView();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

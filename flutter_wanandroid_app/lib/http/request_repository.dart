@@ -13,54 +13,77 @@ typedef SuccessOver<T> = Function(T data, bool over);
 ///@des TODO 数据请求管理类
 class RequestRepository {
 
-  //登录
-  //account 账号
-  //password 账号
-  //success 成功回调
-  //fail 失败回调
-  void login(String account,bool isCheckPrivacy, String password,
+  ///todo [account] 账号
+  ///todo [isCheckPrivacy] 是否记住密码
+  ///todo [password] 密码
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 登录
+  void login(String account, bool isCheckPrivacy, String password,
       {Success<UserEntity>? success, Fail? fail}) {
-    Map<String,String> map = {"username":account,"password":password};
-    Request.post<dynamic>(RequestApi.apiLogin,map,success: (data){
-       var loginInfo = UserEntity.fromJson(data);
-       loginInfo.password = password;
-       if(isCheckPrivacy) {
-         SpUtil.putUserInfo(loginInfo);
-       } else {
-         SpUtil.deleteUserInfo();
-       }
-       if(success != null){
-         success(loginInfo);
-       }
-    },fail: (code,msg){
-      if(fail != null){
-         fail(code,msg);
+    Map<String, String> map = {"username": account, "password": password};
+    Request.post<dynamic>(RequestApi.apiLogin, map, success: (data) {
+      var loginInfo = UserEntity.fromJson(data);
+      loginInfo.password = password;
+      if (isCheckPrivacy) {
+        SpUtil.putUserInfo(loginInfo);
+      } else {
+        SpUtil.deleteUserInfo();
+      }
+      if (success != null) {
+        success(loginInfo);
+      }
+    }, fail: (code, msg) {
+      if (fail != null) {
+        fail(code, msg);
       }
     });
   }
 
-  //首页列表分页
+  ///todo [page] 页数
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 首页-首页列表分页
   void requestHomeArticle(int page,
-      {SuccessOver<List<ResultProjectDetail>>? success, Fail? fail}){
-      Request.get<dynamic>(
-          RequestApi.apiHome.replaceFirst(RegExp("page"), "${page-1}"),
-          {},
-          dialog: false,
-          success: (data){
-            ProjectPage page = ProjectPage.from(data);
-           var list = page.datas.map((data){
-              return ResultProjectDetail.fromJson(data);
-            }).toList();
-           if(success!=null){
-               success(list,page.over);
-           }
-      },fail: (code,msg){
-        if(fail!=null){
-          fail(code,msg);
-        }
-      });
+      {SuccessOver<List<ResultProjectDetail>>? success, Fail? fail}) {
+    Request.get<dynamic>(
+        RequestApi.apiHome.replaceFirst(RegExp("page"), "${page - 1}"), {},
+        dialog: false, success: (data) {
+      ProjectPage page = ProjectPage.from(data);
+      var list = page.datas.map((data) {
+        return ResultProjectDetail.fromJson(data);
+      }).toList();
+      if (success != null) {
+        success(list, page.over);
+      }
+    }, fail: (code, msg) {
+      if (fail != null) {
+        fail(code, msg);
+      }
+    });
   }
 
-
-
+  ///todo [page] 页数
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 首页-广场分页
+  void requestSquare(int page,
+      {SuccessOver<List<ResultProjectDetail>>? success, Fail? fail}) {
+    Request.get<dynamic>(
+        RequestApi.apiSquare.replaceFirst(RegExp("page"), "${page - 1}"), {},
+        dialog: false, success: (data) {
+          ProjectPage projectPage = ProjectPage.from(data);
+          List<ResultProjectDetail> list = projectPage.datas.map((item){
+             return ResultProjectDetail.fromJson(item);
+           }).toList();
+          if(success != null){
+            success(list,projectPage.over);
+          }
+       },
+        fail: (code, msg) {
+      if (fail != null) {
+        fail(code, msg);
+      }
+    });
+  }
 }

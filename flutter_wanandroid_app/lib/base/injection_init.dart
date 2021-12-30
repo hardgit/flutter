@@ -13,6 +13,5 @@ class Injection{
   static Future<void> init() async {
     await Get.putAsync(() => SharedPreferences.getInstance());
     Get.lazyPut(() =>RequestRepository());
-    Get.lazyPut(() => BaseGetPageController());
   }
 }
