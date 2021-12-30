@@ -1,5 +1,6 @@
 import 'package:flutter_wanandroid_app/base/get/controller/base_page_controller.dart';
 import 'package:flutter_wanandroid_app/base/get/getx_controller_inject.dart';
+import 'package:flutter_wanandroid_app/page/home_page/home_ask_page/home_ask_controller.dart';
 import 'package:flutter_wanandroid_app/page/home_page/home_square_page/home_square_controller.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +16,7 @@ class MainBinding extends Bindings{
   void dependencies() {
     Get.lazyPut(() => HomeMainController());
     Get.lazyPut(() => HomeSquareController());
+    Get.lazyPut(() => HomeASKController());
   }
 
 }

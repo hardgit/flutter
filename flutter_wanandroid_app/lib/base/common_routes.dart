@@ -3,7 +3,6 @@ import 'package:flutter_wanandroid_app/page/login_page/login_binding.dart';
 import 'package:flutter_wanandroid_app/page/login_page/login_page.dart';
 import 'package:flutter_wanandroid_app/page/main_binding.dart';
 import 'package:flutter_wanandroid_app/page/main_page.dart';
-import 'package:flutter_wanandroid_app/page/home_page/home_binding.dart';
 import 'package:flutter_wanandroid_app/page/webview_page/web_binding.dart';
 import 'package:flutter_wanandroid_app/page/webview_page/web_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';

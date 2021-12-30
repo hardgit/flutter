@@ -86,4 +86,30 @@ class RequestRepository {
       }
     });
   }
+
+  ///todo [page] 页数
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 首页-问答分页
+  void requestAskArticle(int page,
+      {SuccessOver<List<ResultProjectDetail>>? success, Fail? fail}) {
+    Request.get<dynamic>(
+        RequestApi.apiAsk.replaceFirst(RegExp("page"), "${page - 1}"), {},
+        dialog: false, success: (data) {
+          ProjectPage projectPage = ProjectPage.from(data);
+          List<ResultProjectDetail> list = projectPage.datas.map((item){
+             return ResultProjectDetail.fromJson(item);
+           }).toList();
+          if(success != null){
+            success(list,projectPage.over);
+          }
+       },
+        fail: (code, msg) {
+      if (fail != null) {
+        fail(code, msg);
+      }
+    });
+  }
+
+
 }

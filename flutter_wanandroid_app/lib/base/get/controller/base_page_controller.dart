@@ -59,10 +59,7 @@ abstract class BaseGetPageController extends BaseGetController{
 
 
   ///网络请求在此处进行，不用在重复进行上拉下拉的处理
-  void requestData(RefreshController controller , {Refresh refresh = Refresh.first}){
+  void requestData(RefreshController controller , {Refresh refresh = Refresh.first}) {
 
   }
-
-
-
 }

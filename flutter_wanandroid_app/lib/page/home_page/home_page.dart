@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_wanandroid_app/page/home_page/home_ask_page/home_ask_page.dart';
 import 'package:flutter_wanandroid_app/page/home_page/home_main_page/home_main_page.dart';
  import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage>
              SizedBox(width: 20.w),
              Expanded(
                  child: TabBarView(
-                 children: [HomeMainPage(),HomeSquarePage(),HomeMainPage()],
+                 children: [HomeMainPage(),HomeSquarePage(),HomeAskPage()],
                  controller: _tabController,
              ))
            ],
