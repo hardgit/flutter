@@ -36,7 +36,7 @@ class RefreshExtension{
       controller.loadNoData();
     }
     if(refresh == Refresh.pull){
-      ToastUtils.show(StringStyles.pointsNotifySuccess);
+      // ToastUtils.show(StringStyles.pointsNotifySuccess);
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid_app/base/get/controller/base_page_controller.
 import 'package:flutter_wanandroid_app/res/r.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
+import 'package:flutter_wanandroid_app/utils/ToastUtils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
@@ -109,7 +110,7 @@ class RefreshWidgetState extends State<RefreshWidget>
                               style: Styles.style_B8C0D4_14,
                             );
                           } else if (mode == RefreshStatus.refreshing) {
-                            ///加载中
+                            ///加载中 icon
                             header = Lottie.asset(R.assetsLottieRefreshHeader,
                                 width: 100, animate: true);
                           } else if (mode == RefreshStatus.failed) {
@@ -144,7 +145,7 @@ class RefreshWidgetState extends State<RefreshWidget>
                             ///下拉提示
                             footer = const Text("pull up load");
                           } else if (mode == LoadStatus.loading) {
-                            ///加载中
+                            ///加载中 icon
                             footer = Lottie.asset(R.assetsLottieRefreshFooter,
                                 width: 200, animate: true);
                           } else if (mode == LoadStatus.failed) {
@@ -153,10 +154,16 @@ class RefreshWidgetState extends State<RefreshWidget>
                               StringStyles.refreshError.tr,
                               style: Styles.style_B8C0D4_14,
                             );
-                          } else {
+                          } else if(mode == LoadStatus.noMore){
                             ///无更多数据
                             footer = Text(
                               StringStyles.refreshNoData.tr,
+                              style: Styles.style_B8C0D4_14,
+                            );
+                          }else{
+                            ///上拉加载
+                            footer = Text(
+                              StringStyles.loadHeaderFreed.tr,
                               style: Styles.style_B8C0D4_14,
                             );
                           }

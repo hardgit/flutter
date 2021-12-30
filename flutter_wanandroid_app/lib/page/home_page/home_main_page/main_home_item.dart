@@ -60,7 +60,7 @@ class MainHomeItem extends StatelessWidget {
               Text(" | ",style: Styles.style_12_FF333333),
               Box.getSizeBoxW(10),
               Text(
-                  item.shareUser.isEmpty?item.author:item.shareUser,
+                  item.shareUser.isEmpty ? item.author : item.shareUser,
                   style: Styles.style_12_FF333333),
               Box.getSizeBoxW(10),
               Text(item.niceDate,style: Styles.style_12_FF333333)

@@ -13,6 +13,7 @@ class StringStyles {
   static const String refreshHeaderFailed = "刷新失败";
   static const String refreshHeaderSuccess = "刷新成功";
   static const String refreshHeaderFreed = "释放刷新";
+  static const String loadHeaderFreed = "释放加载";
   static const String refreshError = "加载失败";
   static const String refreshNoData = "没有更多数据啦";
   static const String refreshEmpty = "没有更多内容啦";
