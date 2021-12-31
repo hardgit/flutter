@@ -28,8 +28,8 @@ class Ripple extends StatelessWidget{
         Radius.circular(circular),
       ),
       onTap: onTap,
-      splashColor: ColorStyle.color_E2E3E8_66,
-      highlightColor: ColorStyle.color_E2E3E8_66,
+      splashColor: ColorStyle.color_FBE240_30,
+      highlightColor: ColorStyle.color_FBE240_30,
       child: child,
     );
   }

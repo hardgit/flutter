@@ -8,6 +8,8 @@ import 'package:flutter_wanandroid_app/utils/webviews.dart';
 import 'package:flutter_wanandroid_app/widgets/pull_smart_refresher.dart';
 import 'package:flutter_wanandroid_app/widgets/ripple_widget.dart';
 
+import 'home_ask_item.dart';
+
 ///@FileName home_ask_page
 ///@Date 2021/12/17  15:14
 ///@author zf
@@ -32,9 +34,8 @@ class HomeAskPage extends GetSaveView<HomeASKController>{
                           onTap: () =>
                               WebViews.toWebPage(
                                   controller.resultProjectDetail[index]),
-                          child: HomeSquareItrm(
+                          child: HomeAskItem(
                             item: controller.resultProjectDetail[index],
-                            index: index,
                           ),
                         ),
                       );

@@ -1,7 +1,7 @@
 
 class R {
 
-  ///----------------------------lottie---------------------------
+  ///------------------------------lottie-----------------------------
   static const String assetsLottieLoading = 'assets/lottie/lottie_common_load.json';
   static const String assetsLottiePageLoading= 'assets/lottie/page_loading_anim.json';
   static const String assetsLottieRefreshFooter = 'assets/lottie/refresh_footer.json';
@@ -12,5 +12,9 @@ class R {
 
 
   static const String login_logo_ic = "assets/images/login_logo_ic.png";/*登录页logo*/
+
+  ///--------------------------------SVG-------------------------------
+  static const String user_ask_icon= 'assets/svg/user_ask_icon.svg';
+
 
 }

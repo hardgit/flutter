@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wanandroid_app/page/home_page/home_page.dart';
 import 'package:flutter_wanandroid_app/page/mine_page/mine_page.dart';
+import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 
 ///@FileName home_page
@@ -37,6 +38,7 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 16,
         unselectedFontSize: 16,
+        backgroundColor: Colors.white,
         currentIndex: _currentIndex,
         items: [
           BottomBarItem("home_ic","首页"),
@@ -57,11 +59,13 @@ class BottomBarItem extends BottomNavigationBarItem{
        label: barName,
       icon:Image.asset("assets/images/$barIconName.png",
         width: 32.w,
+        color: ColorStyle.color_6A6969,
         excludeFromSemantics: true,//去除图片语义
         gaplessPlayback: true,//重新加载图片的过程中，原图片的展示是否保留
       ),
       activeIcon:Image.asset("assets/images/${barIconName}_active.png",
         width: 32.w,
+        color: ColorStyle.color_FBE240,
         excludeFromSemantics: true,//去除图片语义
         gaplessPlayback: true,//重新加载图片的过程中，原图片的展示是否保留
       )
