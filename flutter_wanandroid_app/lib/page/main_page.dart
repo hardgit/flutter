@@ -61,13 +61,13 @@ class BottomBarItem extends BottomNavigationBarItem{
   BottomBarItem(String barIconName,String barName) : super(
        label: barName,
       icon:Image.asset("assets/images/$barIconName.png",
-        width: 32.w,
+        width: 25.w,
         color: ColorStyle.color_6A6969,
         excludeFromSemantics: true,//去除图片语义
         gaplessPlayback: true,//重新加载图片的过程中，原图片的展示是否保留
       ),
       activeIcon:Image.asset("assets/images/${barIconName}_active.png",
-        width: 32.w,
+        width: 28.w,
         color: ColorStyle.color_FBE240,
         excludeFromSemantics: true,//去除图片语义
         gaplessPlayback: true,//重新加载图片的过程中，原图片的展示是否保留
