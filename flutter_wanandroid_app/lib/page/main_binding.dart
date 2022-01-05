@@ -1,10 +1,9 @@
-import 'package:flutter_wanandroid_app/base/get/controller/base_page_controller.dart';
-import 'package:flutter_wanandroid_app/base/get/getx_controller_inject.dart';
-import 'package:flutter_wanandroid_app/page/home_page/home_ask_page/home_ask_controller.dart';
-import 'package:flutter_wanandroid_app/page/home_page/home_square_page/home_square_controller.dart';
-import 'package:get/get.dart';
 
+import 'package:get/get.dart';
+import 'home_page/home_ask_page/home_ask_controller.dart';
 import 'home_page/home_main_page/home_main_controller.dart';
+import 'home_page/home_square_page/home_square_controller.dart';
+import 'projects_page/projects_controller.dart';
 
 ///@FileName home_binding
 ///@Date 2021/12/17  11:21
@@ -14,9 +13,10 @@ import 'home_page/home_main_page/home_main_controller.dart';
 class MainBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut(() => HomeMainController());
-    Get.lazyPut(() => HomeSquareController());
-    Get.lazyPut(() => HomeASKController());
+    Get.lazyPut(() => HomeMainController());/*首页-首页控制层*/
+    Get.lazyPut(() => HomeSquareController());/*首页-广场控制层*/
+    Get.lazyPut(() => HomeASKController());/*首页-问答控制层*/
+    Get.lazyPut(() => ProjectsController());/*项目控制层*/
   }
 
 }

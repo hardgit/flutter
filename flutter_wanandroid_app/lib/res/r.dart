@@ -15,6 +15,7 @@ class R {
 
   ///--------------------------------SVG-------------------------------
   static const String user_ask_icon= 'assets/svg/user_ask_icon.svg';
+  static const String assetsImagesProgram = 'assets/svg/program.svg';
 
 
 }

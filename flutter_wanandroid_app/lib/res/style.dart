@@ -55,7 +55,8 @@ class Styles {
     color:ColorStyle.color_FF333333,
     fontSize: 12.sp
   );
-
+  static const TextStyle style_6A6969_14 =
+  TextStyle(color: ColorStyle.color_6A6969, fontSize: 14);
   /*---------------------------加粗字体---------------------------*/
   static TextStyle style_black_18_bold =
   TextStyle(color: Colors.black, fontSize: 18.sp, fontWeight: FontWeight.w700);

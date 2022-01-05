@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wanandroid_app/page/home_page/home_page.dart';
 import 'package:flutter_wanandroid_app/page/mine_page/mine_page.dart';
+import 'package:flutter_wanandroid_app/page/projects_page/projects_page.dart';
 import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 
@@ -31,6 +32,7 @@ class _MainPageState extends State<MainPage> {
            index: _currentIndex,/*下标*/
            children: [
               HomePage(),
+              ProjectsPage(),
               MinePage(),
            ],
          ),
@@ -42,6 +44,7 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _currentIndex,
         items: [
           BottomBarItem("home_ic","首页"),
+          BottomBarItem("projects_ic","项目"),
           BottomBarItem("my_ic","我的")
         ],
         onTap: (index){
