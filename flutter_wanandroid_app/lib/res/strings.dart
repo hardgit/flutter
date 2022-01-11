@@ -34,5 +34,12 @@ class StringStyles {
   static const String recommend = "荐";
   static const String data_new = "新";
   static const String pointsNotifySuccess = "刷新成功";
+  static const String collect = "收藏";
+  static const String integral = "积分";
+  static const String share = "分享";
+  static const String history = "历史";
+  static const String userInfo = "个人信息";
+  static const String auther = "关于";
+  static const String feedback = "问题反馈";
 
 }

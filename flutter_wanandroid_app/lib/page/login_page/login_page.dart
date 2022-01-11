@@ -47,7 +47,7 @@ class LoginPage extends GetCommonView<LoginController>{
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             Image.asset(R.login_logo_ic,width: double.infinity,height: 200.h),
+             Image.asset(R.asset_login_logo_ic,width: double.infinity,height: 200.h),
              Padding(
                  padding: EdgeInsets.only(left: 20.w),
                  child: Text(StringStyles.welcomeToLogin,style: Styles.style_black_18_bold),
