@@ -45,5 +45,16 @@ class SpUtil{
     }
   }
 
+  ///是否记住密码
+  static putBool(String key,bool value){
+    Get.find<SharedPreferences>().setBool(key, value);
+  }
+    ///是否记住密码
+  static bool getBool(String key){
+    var bool = Get.find<SharedPreferences>().getBool(key);
+    if(bool==null)return false;
+    return bool;
+  }
+
 
 }

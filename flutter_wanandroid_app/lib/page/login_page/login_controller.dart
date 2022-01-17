@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_wanandroid_app/base/common_routes.dart';
 import 'package:flutter_wanandroid_app/base/get/getx_controller_inject.dart';
-import 'package:flutter_wanandroid_app/res/r.dart';
+import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/utils/ToastUtils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_wanandroid_app/utils/sp_util.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,8 +21,22 @@ class LoginController extends BaseGetController {
   String password = " ";
 
   ///是否勾选记住秘密
-  bool isCheckPrivacy = true;
+  bool isCheckPrivacy = false;
 
+  final textAccountController = TextEditingController();/*账号控制器*/
+  final textPwdController = TextEditingController();/*密码控制器*/
+
+  /*初始化*/
+  initWidget(){
+    isCheckPrivacy = SpUtil.getBool(StringStyles.isCheckPrivacy);
+    UserEntity? userInfo = SpUtil.getUserInfo();
+    if(isCheckPrivacy && userInfo!=null){
+      textAccountController.text = userInfo.username;
+      textPwdController.text = userInfo.password;
+    }else{
+      isCheckPrivacy = false;
+    }
+  }
 
   /*更新记住密码框的状态*/
   updateCheckPrivacy(){

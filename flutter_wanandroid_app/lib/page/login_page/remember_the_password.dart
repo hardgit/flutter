@@ -22,12 +22,6 @@ class RememberThePassword extends GetCommonView<LoginController>{
   get updateId => StringStyles.isCheckPrivacy;
 
   @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Row(
         children: [

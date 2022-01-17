@@ -3,6 +3,8 @@ import 'package:flutter_wanandroid_app/page/login_page/login_binding.dart';
 import 'package:flutter_wanandroid_app/page/login_page/login_page.dart';
 import 'package:flutter_wanandroid_app/page/main_binding.dart';
 import 'package:flutter_wanandroid_app/page/main_page.dart';
+import 'package:flutter_wanandroid_app/page/register_page/register_binding.dart';
+import 'package:flutter_wanandroid_app/page/register_page/register_page.dart';
 import 'package:flutter_wanandroid_app/page/webview_page/web_binding.dart';
 import 'package:flutter_wanandroid_app/page/webview_page/web_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -15,6 +17,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 abstract class CommonRoutes {
 
   static const String login = '/login'; ///登录页
+  static const String register = '/register'; ///注册页
   static const String main = '/main';///主页
   static const String web = '/web';///webview页
 
@@ -25,6 +28,10 @@ abstract class CommonRoutes {
         name: login,
         page: () =>  LoginPage(),
         binding: LoginBinding()),
+    GetPage(
+        name: register,
+        page: () =>  RegisterPage(),
+        binding: RegisterBinding()),
     GetPage(
         name: main,
         page: () => const MainPage(),

@@ -27,7 +27,7 @@ class ToastUtils{
   static showTopGetDialog(String msg){
     Get.snackbar(
         "提示", msg,
-        duration: Duration(milliseconds: 1500),
+        duration: Duration(milliseconds: 2000),
         backgroundColor: ColorStyle.color_FBE240_30,
     );
   }

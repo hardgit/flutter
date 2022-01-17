@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid_app/http/request.dart';
 import 'package:flutter_wanandroid_app/http/request_api.dart';
 import 'package:flutter_wanandroid_app/model/result_project_detail.dart';
 import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
+import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/utils/sp_util.dart';
 
 typedef SuccessOver<T> = Function(T data, bool over);
@@ -25,11 +26,8 @@ class RequestRepository {
     Request.post<dynamic>(RequestApi.apiLogin, map, success: (data) {
       var loginInfo = UserEntity.fromJson(data);
       loginInfo.password = password;
-      if (isCheckPrivacy) {
-        SpUtil.putUserInfo(loginInfo);
-      } else {
-        SpUtil.deleteUserInfo();
-      }
+      SpUtil.putUserInfo(loginInfo);
+      SpUtil.putBool(StringStyles.isCheckPrivacy,isCheckPrivacy);
       if (success != null) {
         success(loginInfo);
       }
@@ -39,6 +37,26 @@ class RequestRepository {
       }
     });
   }
+
+  ///todo [account] 账号
+  ///todo [password] 密码
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 注册
+  void register(String account,String password,String repassword
+      ,{Success<dynamic>? success,Fail? fail}){
+    Map<String, String> map = {"username": account, "password": password,"repassword":repassword};
+    Request.post(RequestApi.apiRegister, map,success: (data){
+      if(success!=null){
+        success(data);
+      }
+    },fail: (code,msg){
+        if(fail != null){
+          fail(code,msg);
+        }
+    });
+  }
+
 
   ///todo [page] 页数
   ///todo [success] 成功回调

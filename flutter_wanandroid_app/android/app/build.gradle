@@ -57,6 +57,17 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'zhao'
+            keyPassword 'zhaofeng'
+            storePassword 'zhaofeng'
+            storeFile file('key/flutter_wanandroid_app.jks')
+        }
+    }
+
+
 }
 
 flutter {

@@ -1,6 +1,10 @@
 # flutter_wanandroid_app
 
 A new Flutter project.
+生成签名文件：
+keytool -genkey -v -keystore /D:/flutter_wanandroid_app.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+ password:zhaofeng
+ key alias:zhao
 
 ## Getting Started
 

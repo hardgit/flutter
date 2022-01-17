@@ -5,6 +5,7 @@ import 'package:flutter_wanandroid_app/base/common_routes.dart';
 import 'package:flutter_wanandroid_app/base/get_common_view.dart';
 import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
 import 'package:flutter_wanandroid_app/page/login_page/remember_the_password.dart';
+import 'package:flutter_wanandroid_app/res/box.dart';
 import 'package:flutter_wanandroid_app/res/colors.dart';
 import 'package:flutter_wanandroid_app/res/r.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
@@ -24,21 +25,9 @@ class LoginPage extends GetCommonView<LoginController>{
 
   LoginPage({Key? key}):super(key: key);
 
-  final textAccountController = TextEditingController();/*账号控制器*/
-  final textPwdController = TextEditingController();/*密码控制器*/
-
-   @override
-  void initState() {
-      super.initState();
-      UserEntity? userInfo = SpUtil.getUserInfo();
-      if(userInfo!=null){
-        textAccountController.text = userInfo.username;
-        textPwdController.text = userInfo.password;
-      }
-  }
-
   @override
   Widget build(BuildContext context) {
+    controller.initWidget();
     return Scaffold(
       resizeToAvoidBottomInset: false,
        body: Container(
@@ -53,6 +42,7 @@ class LoginPage extends GetCommonView<LoginController>{
                  child: Text(StringStyles.welcomeToLogin,style: Styles.style_black_18_bold),
              ),
              SizedBox(height: 15.h),
+             /*账号*/
              Padding(
                padding: EdgeInsets.only(left: 16.w,right: 16.w),
                child: TextField(
@@ -63,10 +53,11 @@ class LoginPage extends GetCommonView<LoginController>{
                     hintText: StringStyles.pleaseEnterYourAccountNumber,
                     contentPadding: EdgeInsets.only(left: 10.w)
                  ),
-                 controller: textAccountController,
+                 controller: controller.textAccountController,
                )
              ),
              SizedBox(height: 15.h),
+             /*密码*/
              Padding(
                padding: EdgeInsets.only(left: 16.w,right: 16.w),
                child: TextField(
@@ -78,11 +69,13 @@ class LoginPage extends GetCommonView<LoginController>{
                     contentPadding: EdgeInsets.only(left: 10.w),
                  ),
                  obscureText: true,
-                 controller: textPwdController,
+                 controller: controller.textPwdController,
                )
              ),
-             RememberThePassword(),
+             /*记住密码*/
+             const RememberThePassword(),
              SizedBox(height: 20.h),
+             /*登录按钮*/
              Padding(
                padding: EdgeInsets.only(left: 16.w,right: 16.w),
                child: ButtonTheme(
@@ -93,13 +86,22 @@ class LoginPage extends GetCommonView<LoginController>{
                  child:RaisedButton(
                      onPressed: (){
                        KeyboardUtils.hideKeyboard(context);
-                       controller.account = textAccountController.text.toString();
-                       controller.password = textPwdController.text.toString();
+                       controller.account = controller.textAccountController.text.toString();
+                       controller.password = controller.textPwdController.text.toString();
                        controller.update();
                        controller.login();
                      },child: Text(StringStyles.login,style: Styles.style_black_16)),
                )),
              ),
+             Box.getSizeBoxH(10),
+             /*注册*/
+             GestureDetector(
+               child: Center(
+                  child: Text(StringStyles.noAccountRegister,
+                   style: Styles.style_edit_14_FF333333),
+                  ),
+               onTap:()=>Get.toNamed(CommonRoutes.register),
+             )
            ],
          ),
        ),
