@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_wanandroid_app/base/get_common_view.dart';
  import 'package:flutter_wanandroid_app/res/style.dart';
+import 'package:html/parser.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'web_controller.dart';
@@ -30,7 +31,10 @@ class WebViewPage extends GetCommonView<WebController>{
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(controller.entity.title,style: Styles.style_black_16,),
+        title: Text(
+          parse(controller.entity.title).body!.text,
+          style: Styles.style_black_16,
+        ),
       ),
       body: Column(
         children: [
