@@ -29,7 +29,7 @@ class RegisterPage extends GetCommonView<RegisterPageController>{
            children: [
              /*账号*/
              Padding(
-                 padding: EdgeInsets.only(left: 16.w,right: 16.w),
+                 padding: EdgeInsets.only(left: 32.w,right: 32.w),
                  child: TextField(
                    keyboardType: TextInputType.number,
                    maxLines: 1,
@@ -43,7 +43,7 @@ class RegisterPage extends GetCommonView<RegisterPageController>{
              ),
              /*密码*/
              Padding(
-                 padding: EdgeInsets.only(left: 16.w,right: 16.w),
+                 padding: EdgeInsets.only(left: 32.w,right: 32.w),
                  child: TextField(
                    keyboardType: TextInputType.number,
                    maxLines: 1,
@@ -58,7 +58,7 @@ class RegisterPage extends GetCommonView<RegisterPageController>{
              ),
              /*确认密码*/
              Padding(
-                 padding: EdgeInsets.only(left: 16.w,right: 16.w),
+                 padding: EdgeInsets.only(left: 32.w,right: 32.w),
                  child: TextField(
                    keyboardType: TextInputType.number,
                    maxLines: 1,
@@ -73,7 +73,7 @@ class RegisterPage extends GetCommonView<RegisterPageController>{
              ),
              /*注册按钮*/
              Padding(
-               padding: EdgeInsets.only(left: 16.w,top: 20.h,right: 16.w),
+               padding: EdgeInsets.only(left: 32.w,top: 32.h,right: 32.w),
                child: ButtonTheme(
                    minWidth: double.infinity,
                    height: 40.h,

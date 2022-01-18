@@ -44,7 +44,7 @@ class LoginPage extends GetCommonView<LoginController>{
              SizedBox(height: 15.h),
              /*账号*/
              Padding(
-               padding: EdgeInsets.only(left: 16.w,right: 16.w),
+               padding: EdgeInsets.only(left: 32.w,right: 32.w),
                child: TextField(
                  keyboardType: TextInputType.number,
                  maxLines: 1,
@@ -59,17 +59,37 @@ class LoginPage extends GetCommonView<LoginController>{
              SizedBox(height: 15.h),
              /*密码*/
              Padding(
-               padding: EdgeInsets.only(left: 16.w,right: 16.w),
-               child: TextField(
-                 keyboardType: TextInputType.number,
-                 maxLines: 1,
-                 style: Styles.style_edit_17_FF333333,
-                 decoration: InputDecoration(
-                    hintText: StringStyles.enterYourPin,
-                    contentPadding: EdgeInsets.only(left: 10.w),
-                 ),
-                 obscureText: true,
-                 controller: controller.textPwdController,
+               padding: EdgeInsets.only(left: 32.w,right: 32.w),
+               child: Stack(
+                 children: [
+                   TextField(
+                     keyboardType: TextInputType.number,
+                     maxLines: 1,
+                     style: Styles.style_edit_17_FF333333,
+                     decoration: InputDecoration(
+                       hintText: StringStyles.enterYourPin,
+                       contentPadding: EdgeInsets.only(left: 10.w),
+                     ),
+                     obscureText: !controller.isPwd,
+                     controller: controller.textPwdController,
+                   ),
+                   Positioned(
+                       right: 5,
+                       child:Visibility(
+                         visible: true,
+                           child: IconButton(
+                               onPressed: (){
+                                  controller.isPwd = !controller.isPwd;
+                                  controller.update();
+                               },
+                               icon: Icon(
+                                   controller.isPwd?Icons.remove_red_eye:Icons.visibility_off,
+                                   size: 24.w,
+                               ),
+                           )
+                       )
+                   )
+                 ],
                )
              ),
              /*记住密码*/
@@ -77,7 +97,7 @@ class LoginPage extends GetCommonView<LoginController>{
              SizedBox(height: 20.h),
              /*登录按钮*/
              Padding(
-               padding: EdgeInsets.only(left: 16.w,right: 16.w),
+               padding: EdgeInsets.only(left: 32.w,right: 32.w),
                child: ButtonTheme(
                  minWidth: double.infinity,
                 height: 40.h,

@@ -20,8 +20,10 @@ class LoginController extends BaseGetController {
   ///密码
   String password = " ";
 
-  ///是否勾选记住秘密
+  ///是否勾选记住密码
   bool isCheckPrivacy = false;
+
+  bool isPwd = false;
 
   final textAccountController = TextEditingController();/*账号控制器*/
   final textPwdController = TextEditingController();/*密码控制器*/

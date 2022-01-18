@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wanandroid_app/base/get_common_view.dart';
 import 'package:flutter_wanandroid_app/page/login_page/login_controller.dart';
 import 'package:flutter_wanandroid_app/res/colors.dart';
@@ -23,17 +24,20 @@ class RememberThePassword extends GetCommonView<LoginController>{
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        children: [
-          Checkbox(
-              fillColor:MaterialStateProperty.all(ColorStyle.color_FBE240),
-              value: controller.isCheckPrivacy,
-              onChanged: (value){
-                controller.updateCheckPrivacy();
-              }),
-          Text(StringStyles.rememberThePassword,
-            style: Styles.style_edit_14_FF333333,)
-        ]
+    return Padding(
+      padding:EdgeInsets.only(left: 16.w),
+      child: Row(
+          children: [
+            Checkbox(
+                fillColor:MaterialStateProperty.all(ColorStyle.color_FBE240),
+                value: controller.isCheckPrivacy,
+                onChanged: (value){
+                  controller.updateCheckPrivacy();
+                }),
+            Text(StringStyles.rememberThePassword,
+              style: Styles.style_edit_14_FF333333,)
+          ]
+      ),
     );
   }
 

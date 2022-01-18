@@ -11,6 +11,9 @@ class R {
   static const String assetsLottieCollect = 'assets/lottie/collect_success.json';
 
 
+  static const String asset_open_eye_ic = "assets/images/open_eye_ic.png";/*开眼*/
+  static const String asset_close_eye_ic = "assets/images/close_eye_ic.png";/*闭眼*/
+
   static const String asset_login_logo_ic = "assets/images/login_logo_ic.png";/*登录页logo*/
   static const String asset_user_ic_bg = "assets/images/user_ic_bg.png";/*头像背景*/
   static const String asset_user_head_bg = "assets/images/user_head_bg.png";/*头像背景*/
