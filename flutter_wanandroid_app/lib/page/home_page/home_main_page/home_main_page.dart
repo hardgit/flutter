@@ -38,15 +38,14 @@ class HomeMainPage extends GetSaveView<HomeMainController> {
                   itemCount: controller.projectDetails.length + 1,
                   itemBuilder: (BuildContext context, int index) {
                     if(index == 0){
-                       return Container(
-                         child: BannerWidget(imageList: controller.banners,),
-                       );
+                       return BannerWidget(imageList: controller.banners,);
                     }else{
+                      var newIndex = index-1;
                       return Material(
                           color: Colors.transparent,
                           child: Ripple(
-                              onTap: ()=> WebViews.toWebPage(controller.projectDetails[index]),
-                              child: MainHomeItem(item: controller.projectDetails[index],index:index)
+                              onTap: ()=> WebViews.toWebPage(controller.projectDetails[newIndex]),
+                              child: MainHomeItem(item: controller.projectDetails[newIndex],index:newIndex)
                           ));
                     }
                   },
