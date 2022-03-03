@@ -10,6 +10,7 @@ import 'package:flutter_wanandroid_app/res/box.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 import 'package:flutter_wanandroid_app/utils/webviews.dart';
+import 'package:flutter_wanandroid_app/widgets/banner_widget.dart';
 import 'package:flutter_wanandroid_app/widgets/pull_smart_refresher.dart';
 import 'package:flutter_wanandroid_app/widgets/ripple_widget.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -33,15 +34,22 @@ class HomeMainPage extends GetSaveView<HomeMainController> {
           Expanded(
               child:RefreshWidget<HomeMainController>(
                 child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.projectDetails.length + 1,
                   itemBuilder: (BuildContext context, int index) {
-                   return Material(
-                        color: Colors.transparent,
-                        child: Ripple(
-                          onTap: ()=> WebViews.toWebPage(controller.projectDetails[index]),
-                          child: MainHomeItem(item: controller.projectDetails[index],index:index)
-                        ));
+                    if(index == 0){
+                       return Container(
+                         child: BannerWidget(imageList: controller.banners,),
+                       );
+                    }else{
+                      return Material(
+                          color: Colors.transparent,
+                          child: Ripple(
+                              onTap: ()=> WebViews.toWebPage(controller.projectDetails[index]),
+                              child: MainHomeItem(item: controller.projectDetails[index],index:index)
+                          ));
+                    }
                   },
-                  itemCount: controller.projectDetails.length,
                 ),
               )
           ),

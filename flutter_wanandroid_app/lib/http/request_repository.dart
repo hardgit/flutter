@@ -1,6 +1,7 @@
 import 'package:flutter_wanandroid_app/http/http_request.dart';
 import 'package:flutter_wanandroid_app/http/request.dart';
 import 'package:flutter_wanandroid_app/http/request_api.dart';
+import 'package:flutter_wanandroid_app/model/result_banner_entity.dart';
 import 'package:flutter_wanandroid_app/model/result_project_detail.dart';
 import 'package:flutter_wanandroid_app/model/result_user_entity.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
@@ -128,6 +129,7 @@ class RequestRepository {
           }
         });
   }
+
   ///todo [page] 页数
   ///todo [success] 成功回调
   ///todo [fail] 失败回调
@@ -151,5 +153,26 @@ class RequestRepository {
        }
     });
   }
+
+  ///todo [success] 成功回调
+  ///todo [fail] 失败回调
+  ///todo 首页Banner
+  getBanners(
+      {Success<List<BannerEntity>>? success,Fail? fail}){
+    Request.get<List<dynamic>>(RequestApi.apiBanner, {},dialog: false,
+        success: (data){
+      if(success != null){
+        List<BannerEntity> list = data.map((item){
+            return BannerEntity.fromJson(item);
+         }).toList();
+        success(list);
+      }
+    },fail: (code,msg){
+        if(fail!=null){
+          fail(code,msg);
+        }
+    });
+  }
+
 
 }

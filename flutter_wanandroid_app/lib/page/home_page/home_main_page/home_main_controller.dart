@@ -1,9 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_wanandroid_app/base/get/controller/base_page_controller.dart';
+import 'package:flutter_wanandroid_app/model/result_banner_entity.dart';
 import 'package:flutter_wanandroid_app/model/result_project_detail.dart';
 import 'package:flutter_wanandroid_app/utils/ext/refresher_extension.dart';
 import 'package:flutter_wanandroid_app/widgets/pull_smart_refresher.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import '../../../res/r.dart';
 
 ///@FileName home_main_controller
 ///@Date 2021/12/17  15:18
@@ -12,6 +17,13 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class HomeMainController extends BaseGetPageController{
 
   List<ResultProjectDetail> projectDetails = [];
+  List<BannerEntity> banners = [];
+
+  @override
+  void onInit() {
+    super.onInit();
+      getBanner();//轮播图
+  }
 
   ///首页分页请求列表
   @override
@@ -31,5 +43,18 @@ class HomeMainController extends BaseGetPageController{
      });
   }
 
+   ///获取首页轮播图
+  void getBanner(){
+     request.getBanners(success: (data){
+        banners.addAll(data);
+        ///预缓存banner图片，避免加载时出险白屏
+        data.forEach((element) {
+          if (Get.context != null) {
+            precacheImage(NetworkImage(element.imagePath), Get.context!);
+          }
+        });
+     });
+     update();
+  }
 
 }
