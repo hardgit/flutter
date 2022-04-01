@@ -3,6 +3,8 @@ import 'package:flutter_wanandroid_app/page/login_page/login_binding.dart';
 import 'package:flutter_wanandroid_app/page/login_page/login_page.dart';
 import 'package:flutter_wanandroid_app/page/main_binding.dart';
 import 'package:flutter_wanandroid_app/page/main_page.dart';
+import 'package:flutter_wanandroid_app/page/mine_page/mine_history_page/mine_history_binding.dart';
+import 'package:flutter_wanandroid_app/page/mine_page/mine_history_page/mine_history_page.dart';
 import 'package:flutter_wanandroid_app/page/register_page/register_binding.dart';
 import 'package:flutter_wanandroid_app/page/register_page/register_page.dart';
 import 'package:flutter_wanandroid_app/page/webview_page/web_binding.dart';
@@ -20,6 +22,7 @@ abstract class CommonRoutes {
   static const String register = '/register'; ///注册页
   static const String main = '/main';///主页
   static const String web = '/web';///webview页
+  static const String history = '/history';///历史
 
 
   ///页面合集
@@ -40,6 +43,10 @@ abstract class CommonRoutes {
         name: web,
         page: () => const WebViewPage(),
         binding: WebBinding()),
+    GetPage(
+        name: history,
+        page: () => const MineHistoryPage(),
+        binding: MineHistoryBinding()),
 
   ];
 }

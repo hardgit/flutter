@@ -6,20 +6,26 @@
 class ProjectPage {
   ///当前页数
   int curPage = 0;
+
   ///当前页大小
   int size = 0;
+
   ///数据总大小
   int total = 0;
+
   ///数据
   List datas = [];
+
   ///偏移
   int offset = 0;
+
   ///是否为最后一页
   bool over = false;
+
   ///页数长度
   int pageCount = 0;
 
-  ProjectPage.from(Map<dynamic,dynamic> json){
+  ProjectPage.from(Map<dynamic, dynamic> json) {
     curPage = json["curPage"];
     size = json["size"];
     total = json["total"];
@@ -28,11 +34,9 @@ class ProjectPage {
     over = json["over"];
     pageCount = json["pageCount"];
   }
-
-
 }
 
-class ResultProjectDetail{
+class ResultProjectDetail {
   String apkLink = "";
   int audit = 0;
   String author = "";
@@ -67,7 +71,7 @@ class ResultProjectDetail{
   int visible = 0;
   int zan = 0;
 
-  ResultProjectDetail.fromJson(Map<dynamic,dynamic> json){
+  ResultProjectDetail.fromJson(Map<dynamic, dynamic> json) {
     apkLink = json["apkLink"];
     audit = json["audit"];
     author = json["author"];
@@ -101,4 +105,39 @@ class ResultProjectDetail{
     zan = json["zan"];
   }
 
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> maps = <String, dynamic>{};
+    maps["apkLink"] = apkLink;
+    maps["audit"] = audit;
+    maps["author"] = author;
+    maps["canEdit"] = canEdit;
+    maps["chapterId"] = chapterId;
+    maps["collect"] = collect;
+    maps["desc"] = desc;
+    maps["descMd"] = descMd;
+    maps["envelopePic"] = envelopePic;
+    maps["fresh"] = fresh;
+    maps["host"] = host;
+    maps["id"] = id;
+    maps["link"] = link;
+    maps["niceDate"] = niceDate;
+    maps["niceShareDate"] = niceShareDate;
+    maps["origin"] = origin;
+    maps["prefix"] = prefix;
+    maps["projectLink"] = projectLink;
+    maps["publishTime"] = publishTime;
+    maps["realSuperChapterId"] = realSuperChapterId;
+    maps["selfVisible"] = selfVisible;
+    maps["shareDate"] = shareDate;
+    maps["shareUser"] = shareUser;
+    maps["superChapterId"] = superChapterId;
+    maps["superChapterName"] = superChapterName;
+    maps["tags"] = tags;
+    maps["title"] = title;
+    maps["type"] = type;
+    maps["userId"] = userId;
+    maps["visible"] = visible;
+    maps["zan"] = zan;
+    return maps;
+  }
 }

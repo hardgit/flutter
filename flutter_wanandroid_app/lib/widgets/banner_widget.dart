@@ -27,7 +27,7 @@ class BannerWidget extends StatefulWidget {
 
 class _BannerWidgetState extends State<BannerWidget> {
 
-  late Timer _timer;
+   Timer? _timer;
   late int _index = 0;
   late PageController _pageController;
 
@@ -91,10 +91,19 @@ class _BannerWidgetState extends State<BannerWidget> {
             });
           },
           itemBuilder: (context,index) {
-              return ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(widget.imageList[index].imagePath),
-            );
+              return GestureDetector(
+                onPanDown: (down){
+                  _timeCancel();
+                },
+                /*点击位置回传*/
+                onTap: (){
+
+                },
+                 child: ClipRRect(
+                   borderRadius: BorderRadius.circular(10),
+                   child: Image.network(widget.imageList[index].imagePath),
+                 ),
+              );
           })
     );
   }
@@ -108,7 +117,11 @@ class _BannerWidgetState extends State<BannerWidget> {
 
   ///开始
   _timeStart(){
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    if(_timer != null){
+      _timer?.cancel();
+      _timer = null;
+    }
+    _timer ??= Timer.periodic(const Duration(seconds: 3), (timer) {
       _index++;
       if(_index>=widget.imageList.length){
         _index = 0;
@@ -123,8 +136,11 @@ class _BannerWidgetState extends State<BannerWidget> {
   }
   ///终止
   _timeCancel(){
-    _pageController.dispose();
-    _timer.cancel();
+    if(_timer != null){
+      _timer?.cancel();
+      _timer = null;
+      _timeStart();
+    }
   }
 }
 

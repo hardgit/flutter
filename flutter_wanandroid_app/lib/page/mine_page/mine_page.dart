@@ -10,6 +10,7 @@ import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wanandroid_app/utils/ToastUtils.dart';
+import 'package:flutter_wanandroid_app/utils/sp_util.dart';
 import 'package:flutter_wanandroid_app/widgets/icon_text_icon.dart';
 import 'package:flutter_wanandroid_app/widgets/title_content_widget.dart';
 import 'package:get/get.dart';
@@ -68,7 +69,7 @@ class MinePage extends GetSaveView<MinePageController> {
                           content: StringStyles.integral),
                       /*历史*/
                       StatisticsList(
-                        title: controller.historyCount.toString(),
+                        title: SpUtil.getHistoryCount().toString(),
                         content: StringStyles.history,
                       ),
                       /*收藏*/
@@ -147,7 +148,7 @@ class StatisticsList extends StatelessWidget {
                 ToastUtils.showTopGetDialog(content);
                 break;
               case "历史":
-                ToastUtils.showTopGetDialog(content);
+                Get.toNamed(CommonRoutes.history);
                 break;
               case "收藏":
                 ToastUtils.showTopGetDialog(content);

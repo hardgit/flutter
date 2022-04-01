@@ -1,6 +1,7 @@
 import 'package:flutter_wanandroid_app/base/common_routes.dart';
 import 'package:flutter_wanandroid_app/model/result_project_detail.dart';
 import 'package:flutter_wanandroid_app/model/webvew_entity.dart';
+import 'package:flutter_wanandroid_app/utils/sp_util.dart';
 import 'package:get/get.dart';
 
 ///@FileName webviews
@@ -19,6 +20,7 @@ class WebViews{
              url: model.link
          )
      );
+     SpUtil.saveDataHistory(model);
   }
 
 }
