@@ -1,146 +1,173 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid_app/model/result_banner_entity.dart';
-import 'package:flutter_wanandroid_app/res/r.dart';
+import 'package:flutter_wanandroid_app/res/colors.dart';
 
-///@FileName banner_widget
-///@Date 2022/2/9  10:18
-///@author zf
-///@Description TODO 自定义banner
 
-///实现思路：
-///1.创建定时器；
-///2.创建PageView根据定时任务进行切换页面;
-///3.创建底部指示器且随着PageViwe切换而切换。
 class BannerWidget extends StatefulWidget {
+  /// Banners列表数据
+  final List<BannerEntity> banner;
 
-  /*图片容器集合*/
-  List<BannerEntity> imageList = [];
+  /// Banners高度
+  final double height;
 
-  BannerWidget({Key? key,required this.imageList}) : super(key: key);
+  /// 点击位置
+  final ValueChanged<int> onTap;
+
+  ///滑动曲线
+  final Curve curve;
+
+  BannerWidget(
+    this.banner, {
+    this.height = 200,
+    required this.onTap,
+    this.curve = Curves.linear,
+  });
 
   @override
-  _BannerWidgetState createState() => _BannerWidgetState();
+  _BannerState createState() => _BannerState();
 }
 
-class _BannerWidgetState extends State<BannerWidget> {
-
-   Timer? _timer;
-  late int _index = 0;
+class _BannerState extends State<BannerWidget> {
   late PageController _pageController;
+  late int _curIndex;
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _index);
-    _timeStart();
+    _curIndex = widget.banner.length * 5;
+    _pageController = PageController(initialPage: _curIndex);
+    _initTimer();
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.bottomCenter,/*下方指示器居中*/
-        children: <Widget>[
-          _pageView(),
-          _drawBottmIndicator()
-        ],
+      alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        _buildPageView(),
+        _buildIndicator(),
+      ],
     );
   }
 
-
-  ///绘制指示器
-  Widget _drawBottmIndicator() {
-    var length = widget.imageList.length;
-     return Positioned(
-       bottom: 10,
-         child: Row(
-           children: widget.imageList.map((index){
-             return Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 3.0),
-               child: ClipOval(
-                 child: Container(
-                   width: 8,
-                   height: 8,
-                   color: index == widget.imageList[_index % length]
-                       ?Colors.white:Colors.grey,
-                 ),
-               ),
-             );
-           }).toList(),
-         )
-     );
-  }
-
-  Widget _pageView(){
-    if(widget.imageList.isEmpty){
+  ///指引器
+  Widget _buildIndicator() {
+    if (widget.banner.isEmpty) {
       return const SizedBox();
     }
-    var length = widget.imageList.length;
-    return SizedBox(
-      height: 200,
-      child: PageView.builder(
-          controller: _pageController,
-          itemCount:length,
-          physics: const PageScrollPhysics(parent: BouncingScrollPhysics()),
-          onPageChanged: (index){
-            setState(() {
-              _index = index;
-              _changePage();
-            });
-          },
-          itemBuilder: (context,index) {
-              return GestureDetector(
-                onPanDown: (down){
-                  _timeCancel();
-                },
-                /*点击位置回传*/
-                onTap: (){
-
-                },
-                 child: ClipRRect(
-                   borderRadius: BorderRadius.circular(10),
-                   child: Image.network(widget.imageList[index].imagePath),
-                 ),
-              );
-          })
+    var length = widget.banner.length;
+    return Positioned(
+      bottom: 10,
+      child: Row(
+        children: widget.banner.map((s) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3.0),
+            child: ClipOval(
+              child: Container(
+                width: 7,
+                height: 7,
+                color: s == widget.banner[_curIndex % length]
+                    ? Colors.white
+                    : Colors.grey,
+              ),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 
-  ///切换图片
-  _changePage(){
-    Timer(const Duration(milliseconds: 300), () {
-      _pageController.jumpToPage(_index);
-    });
+  ///PageView
+  Widget _buildPageView() {
+    if (widget.banner.isEmpty) {
+      return const SizedBox();
+    }
+    var length = widget.banner.length;
+    return SizedBox(
+      height: widget.height,
+      child: PageView.builder(
+        controller: _pageController,
+        scrollDirection: Axis.horizontal,
+        physics: const PageScrollPhysics(parent: BouncingScrollPhysics()),
+        onPageChanged: (index) {
+          setState(() {
+            _curIndex = index;
+            if (index == 0) {
+              _curIndex = length;
+              _changePage();
+            }
+          });
+        },
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onPanDown: (details) {
+              _cancelTimer();
+            },
+
+            ///回传点击位置
+            onTap: () {
+              widget.onTap(index % length);
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: widget.banner[index % length].isAssets
+                    ? Container(
+                        color: ColorStyle.color_FBE240,
+                        child: Image.asset(
+                            widget.banner[index % length].imagePath),
+                      )
+                    : Image.network(
+                        widget.banner[index % length].imagePath,
+                        fit: BoxFit.fill,
+                      ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 
-  ///开始
-  _timeStart(){
-    if(_timer != null){
+  /// 点击到图片的时候取消定时任务
+  _cancelTimer() {
+    if (_timer != null) {
+      _timer?.cancel();
+      _timer = null;
+      _initTimer();
+    }
+  }
+
+  /// 初始化定时任务
+  _initTimer() {
+    if (_timer != null) {
       _timer?.cancel();
       _timer = null;
     }
-    _timer ??= Timer.periodic(const Duration(seconds: 3), (timer) {
-      _index++;
-      if(_index>=widget.imageList.length){
-        _index = 0;
+    _timer ??= Timer.periodic(const Duration(seconds: 3), (t) {
+      if(widget.banner.isEmpty){
+        return;
       }
-      print('_index=  $_index');
+      _curIndex++;
+      if (!_pageController.hasClients){
+        return;
+      }
       _pageController.animateToPage(
-        _index,
+        _curIndex,
         duration: const Duration(milliseconds: 300),
         curve: Curves.linear,
       );
     });
   }
-  ///终止
-  _timeCancel(){
-    if(_timer != null){
-      _timer?.cancel();
-      _timer = null;
-      _timeStart();
-    }
+
+  /// 切换页面，并刷新小圆点
+  _changePage() {
+    Timer(const Duration(milliseconds: 350), () {
+      _pageController.jumpToPage(_curIndex);
+    });
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:flutter_wanandroid_app/res/DecorationStyle.dart';
 import 'package:flutter_wanandroid_app/res/box.dart';
 import 'package:flutter_wanandroid_app/res/strings.dart';
 import 'package:flutter_wanandroid_app/res/style.dart';
+import 'package:flutter_wanandroid_app/utils/ToastUtils.dart';
 import 'package:flutter_wanandroid_app/utils/webviews.dart';
 import 'package:flutter_wanandroid_app/widgets/banner_widget.dart';
 import 'package:flutter_wanandroid_app/widgets/pull_smart_refresher.dart';
@@ -38,7 +39,22 @@ class HomeMainPage extends GetSaveView<HomeMainController> {
                   itemCount: controller.projectDetails.length + 1,
                   itemBuilder: (BuildContext context, int index) {
                     if(index == 0){
-                       return BannerWidget(imageList: controller.banners,);
+                       return Container(
+                         margin: EdgeInsets.only(top: 10.h,bottom: 10.h),
+                         width: double.infinity,
+                         height: 140.h,
+                         child: BannerWidget(
+                            controller.banners,
+                            height: 200.h,
+                           onTap: (index){
+                              if(index == 0){
+                                ToastUtils.show("WanAndroid");
+                              }else{
+                                WebViews.toWebBanners(controller.banners[index]);
+                              }
+                           },
+                         ),
+                       );
                     }else{
                       var newIndex = index-1;
                       return Material(

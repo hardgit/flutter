@@ -46,6 +46,10 @@ class HomeMainController extends BaseGetPageController{
    ///获取首页轮播图
   void getBanner(){
      request.getBanners(success: (data){
+       banners.add(BannerEntity(
+           imagePath: R.asset_login_logo_ic,
+           isAssets: true
+       ));
         banners.addAll(data);
         ///预缓存banner图片，避免加载时出险白屏
         data.forEach((element) {
